@@ -1,0 +1,10 @@
+class Solution:
+    def maxSatisfaction(self, satisfaction: List[int]) -> int:
+        def solve(self,arr,n,i,c):
+            if i>n-1:
+                return 0
+            take=arr[i]*(c+1)+solve(self,arr,n,i+1,c+1)
+            no_take=solve(self,arr,n,i+1,c)
+            return max(take,no_take)
+        satisfaction.sort()
+        return solve(self,satisfaction,len(satisfaction),0,0)
