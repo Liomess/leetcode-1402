@@ -1,0 +1,16 @@
+class Solution:
+    def maxSatisfaction(self, satisfaction: List[int]) -> int:
+        def solve(self,arr,n,i,c,dp):
+            if i>n-1:
+                dp[i][c]=0
+                return dp[i][c]
+            if dp[i][c]!="":
+                return dp[i][c]
+            take=arr[i]*(c+1)+solve(self,arr,n,i+1,c+1,dp)
+            no_take=solve(self,arr,n,i+1,c,dp)
+            dp[i][c]=max(take,no_take)
+            return dp[i][c]
+        satisfaction.sort()
+        n=len(satisfaction)
+        dp=[["" for i in range(n+1)]for j in range(n+1)]
+        return solve(self,satisfaction,n,0,0,dp)
